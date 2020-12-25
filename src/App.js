@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person';
 import styled from 'styled-components';
 
@@ -48,11 +48,8 @@ class App extends Component {
 
     
     render() {
-      
-      
-
       let persons = null;
-
+      let btnClass = '';
     if (this.state.showPersons) {
       persons = (
         <div>
@@ -61,6 +58,7 @@ class App extends Component {
           })}
       </div> 
       )
+      btnClass = classes.Red;
       // style.backgroundColor = 'red';
       // style[':hover'] = {
       //   backgroundColor: 'salmon',
@@ -68,20 +66,20 @@ class App extends Component {
       // }
     }
 
-    let classes = []; // red bold
+    let assignedClasses = []; // red bold
     if (this.state.persons.length <= 2){
-      classes.push('red'); 
+      assignedClasses.push(classes.red); 
     }
     if (this.state.persons.length <= 1){
-      classes.push('bold'); // red bold
+      assignedClasses.push(classes.bold); // red bold
     }
     
       return (
 
-      <div className="App">
+      <div className={classes.App}>
        <h1>Hello Moto</h1>
-       <p className={classes.join(' ')}> This is really working!</p>
-       <Button className="button" onClick={this.togglePersonsHandler}> Switch Name </Button>       
+       <p className={assignedClasses.join(' ')}> This is really working!</p>
+       <button className={btnClass} onClick={this.togglePersonsHandler}> Switch Name </button>       
        {persons}
     
      </div>
